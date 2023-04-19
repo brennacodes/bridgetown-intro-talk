@@ -6,7 +6,6 @@ Bridgetown.configure do |config|
   # timezone "America/Los_Angeles"
   #
   # You can also modify options on the configuration object directly, like so:
-  #
   # config.autoload_paths << "models"
   #
 
@@ -18,14 +17,13 @@ Bridgetown.configure do |config|
   #
 
   # Uncomment to use Bridgetown SSR (aka dynamic rendering of content via Roda):
-  #
   # init :ssr
   #
 
   # Uncomment to use file-based dynamic template routing via Roda (make sure you
   # uncomment the gem dependency in your `Gemfile` as well):
   #
-  # init :"bridgetown-routes"
+  init :"bridgetown-routes"
   #
 
   # We also recommend that if you're using Roda routes you include this plugin
@@ -33,9 +31,9 @@ Bridgetown.configure do |config|
   # `bin/bridgetown roda:routes` to print the routes. (This will require you to
   # comment your route blocks. See example in `server/routes/hello.rb.sample`.)
   #
-  # only :server do
-  #   init :parse_routes
-  # end
+  only :server do
+    init :parse_routes
+  end
   #
 
   # For more documentation on how to configure your site using this initializers file,

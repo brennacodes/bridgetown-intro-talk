@@ -94,10 +94,12 @@ const importPostCssPlugin = (options, configuration) => ({
 
       // Configure import plugin so PostCSS can properly resolve `@import`ed CSS files
       const importPlugin = postCssImport({
-        filter: itemPath => !itemPath.startsWith("/"), // ensure it doesn't try to import source-relative paths
+        // ensure it doesn't try to import source-relative paths
+        filter: itemPath => !itemPath.startsWith("/"),
         load: async filename => {
           let contents = await readCache(filename, "utf-8")
           const filedir = path.dirname(filename)
+
           // We'll want to track any imports later when in watch mode:
           additionalFilePaths.push(filename)
 
@@ -261,13 +263,19 @@ const postcssrc = require("postcss-load-config")
 
 module.exports = async (outputFolder, esbuildOptions) => {
   esbuildOptions.plugins = esbuildOptions.plugins || []
+
   // Add the PostCSS & glob plugins to the top of the plugin stack
   const postCssConfig = await postcssrc()
+
   esbuildOptions.plugins.unshift(importPostCssPlugin(postCssConfig, esbuildOptions.postCssPluginConfig || {}))
+
   if (esbuildOptions.postCssPluginConfig) delete esbuildOptions.postCssPluginConfig
+
   esbuildOptions.plugins.unshift(importGlobPlugin())
+
   // Add the Sass plugin
   esbuildOptions.plugins.push(sassPlugin(esbuildOptions.sassOptions || {}))
+
   // Add the Bridgetown preset
   esbuildOptions.plugins.push(bridgetownPreset(outputFolder))
 
