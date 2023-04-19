@@ -2,6 +2,15 @@
 
 [Learn more about Bridgetown](https://www.bridgetownrb.com/)
 
+For Danielle:
+- `brew install ruby-build`
+- `brew upgrade`
+- `brew doctor`
+- `rbenv install 3.2.2`
+- `rbenv global 3.2.2`
+- `rbenv rehash`
+- `source ~/.zshrc`
+
 1. Install Bridgetown
 ```
 gem install bridgetown
