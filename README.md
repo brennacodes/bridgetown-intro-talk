@@ -3,14 +3,14 @@
 [Learn more about Bridgetown](https://www.bridgetownrb.com/)
 
 For Danielle:
-- `brew install ruby-build`
-- `brew upgrade`
-- `brew doctor`
-- `rbenv install 3.2.2`
-- `rbenv global 3.2.2`
-- `rbenv rehash`
-- `source ~/.zshrc`
-
+1. `brew install ruby-build`
+1. `brew upgrade`
+1. `brew doctor`
+1. `rbenv install 3.2.2`
+1. `rbenv global 3.2.2`
+1. `rbenv rehash`
+1. `source ~/.zshrc`
+------
 1. Install Bridgetown
 ```
 gem install bridgetown
